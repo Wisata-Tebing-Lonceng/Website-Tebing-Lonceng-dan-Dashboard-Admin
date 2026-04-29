@@ -265,14 +265,6 @@ Proyek ini adalah karya akademik. Kontribusi tetap terbuka melalui:
 
 ---
 
-## 👨‍💻 Tim Pengembang
-
-| Nama | Peran |
-|---|---|
-| **Natan** | Full-Stack Developer & UI/UX Designer |
-
----
-
 ## 📄 Lisensi
 
 Proyek ini dibuat untuk keperluan akademik dan didistribusikan di bawah [MIT License](LICENSE).
