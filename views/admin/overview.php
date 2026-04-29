@@ -134,8 +134,8 @@
         <div class="drawer-content m-4 h-[calc(100vh-2rem)] overflow-y-auto bg-white rounded-xl shadow-[-10px_0_40px_rgba(0,0,0,0.04)] border-l border-black/5 relative z-10 custom-scrollbar">
             
             <!-- Navbar -->
-            <div class="px-6 lg:px-10 py-6 flex items-center justify-between gs-reveal sticky top-0 bg-white/80 backdrop-blur-xl z-20 border-b border-black/5">
-                <div class="flex items-center gap-4">
+            <div class="px-4 sm:px-6 lg:px-10 py-5 sm:py-6 flex items-center justify-between gs-reveal sticky top-0 bg-white/80 backdrop-blur-xl z-20 border-b border-black/5">
+                <div class="flex items-center gap-3 sm:gap-4">
                     <label for="admin-drawer" class="btn btn-square btn-ghost btn-sm lg:hidden bg-charcoal/5 text-charcoal">
                         <i class="fi fi-rr-menu-burger"></i>
                     </label>
@@ -151,11 +151,11 @@
             </div>
 
             <!-- Page Content -->
-            <div class="px-6 lg:px-10 pb-10 pt-8">
+            <div class="px-4 sm:px-6 lg:px-10 pb-10 pt-6 sm:pt-8">
                 <div class="max-w-6xl mx-auto">
                     
                     <!-- Banner -->
-                    <div class="relative w-full rounded-[2rem] overflow-hidden p-8 lg:p-12 mb-8 gs-reveal flex flex-col justify-between min-h-[320px] lg:min-h-[380px] border border-black/5 bg-[#FBF9F6]">
+                    <div class="relative w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden p-6 sm:p-8 lg:p-12 mb-8 gs-reveal flex flex-col justify-between min-h-[280px] sm:min-h-[320px] lg:min-h-[380px] border border-black/5 bg-[#FBF9F6]">
                         
                         <!-- Project Palette Mesh Gradient Background -->
                         <div class="absolute -top-[10%] -right-[5%] w-[60%] h-[70%] bg-sage/30 rounded-full blur-[80px] pointer-events-none"></div>
@@ -178,17 +178,17 @@
                         </div>
 
                         <!-- Bottom: Typography -->
-                        <div class="relative z-10 mt-16 max-w-2xl">
-                            <h2 class="text-6xl lg:text-[5.5rem] font-serif text-charcoal leading-[1.05] tracking-tight mb-3">
+                        <div class="relative z-10 mt-12 sm:mt-16 max-w-2xl">
+                            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-charcoal leading-[1.05] tracking-tight mb-3">
                                 Eksplorasi<br/> <span class="italic pr-4">performa sistem</span>
                             </h2>
-                            <p class="text-charcoal/60 font-medium text-sm lg:text-base">Selami metrik kunjungan, persetujuan, dan ulasan secara komprehensif.</p>
+                            <p class="text-charcoal/60 font-medium text-xs sm:text-sm lg:text-base">Selami metrik kunjungan, persetujuan, dan ulasan secara komprehensif.</p>
                         </div>
                     </div>
 
                     <!-- 4 Stats Cards -->
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mb-10 gs-reveal">
-                        <div class="bg-white rounded-[1.5rem] p-6 border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-transform duration-300">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-10 gs-reveal">
+                        <div class="bg-white rounded-[1.25rem] sm:rounded-[1.5rem] p-5 sm:p-6 border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-transform duration-300">
                             <div class="flex justify-between items-start mb-4">
                                 <div class="text-[10px] uppercase tracking-widest text-charcoal/50 font-bold">Total Kunjungan</div>
                                 <div class="w-10 h-10 rounded-xl bg-[#FBF9F6] text-charcoal/40 flex items-center justify-center text-lg border border-black/5">
@@ -198,7 +198,7 @@
                             <div class="text-4xl font-serif text-charcoal">{{ pageVisits }}</div>
                         </div>
 
-                        <div class="bg-white rounded-[1.5rem] p-6 border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-transform duration-300">
+                        <div class="bg-white rounded-[1.25rem] sm:rounded-[1.5rem] p-5 sm:p-6 border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-transform duration-300">
                             <div class="flex justify-between items-start mb-4">
                                 <div class="text-[10px] uppercase tracking-widest text-charcoal/50 font-bold">Ulasan Masuk</div>
                                 <div class="w-10 h-10 rounded-xl bg-sage/10 text-sage flex items-center justify-center text-lg border border-sage/10">
@@ -208,7 +208,7 @@
                             <div class="text-4xl font-serif text-charcoal">{{ totalReviews }}</div>
                         </div>
 
-                        <div class="bg-white rounded-[1.5rem] p-6 border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-transform duration-300">
+                        <div class="bg-white rounded-[1.25rem] sm:rounded-[1.5rem] p-5 sm:p-6 border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-transform duration-300">
                             <div class="flex justify-between items-start mb-4">
                                 <div class="text-[10px] uppercase tracking-widest text-charcoal/50 font-bold">Galeri Aktif</div>
                                 <div class="w-10 h-10 rounded-xl bg-clay/10 text-clay flex items-center justify-center text-lg border border-clay/10">
@@ -218,7 +218,7 @@
                             <div class="text-4xl font-serif text-charcoal">{{ totalGalleries }}</div>
                         </div>
 
-                        <div class="bg-white rounded-[1.5rem] p-6 border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-transform duration-300">
+                        <div class="bg-white rounded-[1.25rem] sm:rounded-[1.5rem] p-5 sm:p-6 border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.03)] hover:-translate-y-1 transition-transform duration-300">
                             <div class="flex justify-between items-start mb-4">
                                 <div class="text-[10px] uppercase tracking-widest text-charcoal/50 font-bold">Status Server</div>
                                 <div class="w-10 h-10 rounded-xl bg-[#FBF9F6] text-charcoal flex items-center justify-center text-lg border border-black/5">
@@ -292,8 +292,8 @@
                     <div class="grid w-full gap-6 mb-8">
                         <!-- Aktivitas Terbaru -->
                         <div class="table-container gs-reveal flex flex-col border border-black/5 shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-                            <div class="px-6 py-5 border-b border-black/5 flex items-center justify-between bg-white">
-                                <div class="flex items-center gap-3">
+                            <div class="px-4 sm:px-6 py-5 border-b border-black/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white">
+                                <div class="flex flex-wrap items-center gap-2 sm:gap-3">
                                     <h3 class="text-sm font-bold uppercase tracking-widest text-charcoal/60 flex items-center gap-2">
                                         <i class="fi fi-rr-time-past"></i> Aktivitas Terbaru
                                     </h3>
@@ -306,7 +306,7 @@
                                         {{ pendingReviews + pendingGalleries }} Menunggu
                                     </span>
                                 </div>
-                                <div class="flex items-center gap-3">
+                                <div class="flex flex-wrap items-center gap-2 sm:gap-3">
                                     <span class="text-[10px] text-charcoal/30 font-medium hidden sm:block">Diperbarui {{ lastUpdated }}</span>
                                     <a href="reviews.php" class="text-[10px] font-bold uppercase tracking-widest text-charcoal/40 hover:text-sage transition-colors">Ulasan</a>
                                     <span class="text-charcoal/20">·</span>

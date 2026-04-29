@@ -75,6 +75,16 @@
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
+
+/* Responsive: scale down on small screens */
+@media (max-width: 480px) {
+  .loader-logo-wrap {
+    width: 100px;
+  }
+  .loading-text {
+    font-size: 24px;
+  }
+}
 </style>
 
 <div class="global-loader-overlay" id="global-loader">

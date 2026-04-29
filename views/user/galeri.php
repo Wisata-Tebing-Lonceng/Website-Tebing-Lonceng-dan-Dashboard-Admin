@@ -110,12 +110,12 @@ $galleries = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
                 </div>
                 <div class="navbar-end w-1/3 flex justify-end">
                     <?php if (isset($_SESSION['user_id'])): ?>
-                        <button @click="openModal" class="btn bg-charcoal hover:bg-sage text-white rounded-full border-none px-6 shadow-sm transition-all">
-                            <i class="fi fi-rr-cloud-upload"></i> Unggah
+                        <button @click="openModal" class="btn bg-charcoal hover:bg-sage text-white rounded-full border-none px-4 sm:px-6 shadow-sm transition-all">
+                            <i class="fi fi-rr-cloud-upload"></i> <span class="hidden sm:inline">Unggah</span>
                         </button>
                     <?php else: ?>
-                        <button @click="openLoginModal" class="btn bg-charcoal hover:bg-sage text-white rounded-full border-none px-6 shadow-sm transition-all inline-flex items-center gap-2">
-                            <i class="fi fi-rr-user"></i> Masuk untuk Unggah
+                        <button @click="openLoginModal" class="btn bg-charcoal hover:bg-sage text-white rounded-full border-none px-4 sm:px-6 shadow-sm transition-all inline-flex items-center gap-2">
+                            <i class="fi fi-rr-user"></i> <span class="hidden sm:inline">Masuk untuk Unggah</span>
                         </button>
                     <?php endif; ?>
                 </div>
@@ -124,17 +124,17 @@ $galleries = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     </div>
 
     <!-- MAIN CONTENT -->
-    <main class="pt-40 pb-24 px-6 lg:px-8 max-w-7xl mx-auto relative min-h-screen">
+    <main class="pt-36 sm:pt-40 pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative min-h-screen">
         
         <!-- Header -->
-        <div class="text-center max-w-3xl mx-auto mb-16 gsap-fade-up">
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 gsap-fade-up">
             <div class="inline-flex items-center gap-2 px-4 py-2 bg-sage/10 rounded-full text-xs font-bold text-sage tracking-widest uppercase mb-6 border border-sage/20">
                 <i class="fi fi-rr-camera"></i> Eksplorasi Visual
             </div>
-            <h1 class="text-5xl md:text-7xl font-serif text-charcoal leading-tight mb-6">
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-serif text-charcoal leading-tight mb-4 sm:mb-6">
                 Galeri <span class="italic text-sage">Komunitas</span>
             </h1>
-            <p class="text-charcoal/60 text-lg md:text-xl font-medium leading-relaxed">
+            <p class="text-charcoal/60 text-base md:text-lg lg:text-xl font-medium leading-relaxed">
                 Kumpulan momen indah yang diabadikan oleh para pengunjung di Tebing Lonceng.
             </p>
         </div>

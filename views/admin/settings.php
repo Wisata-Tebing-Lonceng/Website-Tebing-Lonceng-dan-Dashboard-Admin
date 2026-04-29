@@ -102,12 +102,12 @@
         <div class="drawer-content m-4 h-[calc(100vh-2rem)] overflow-y-auto bg-white rounded-xl shadow-[-10px_0_40px_rgba(0,0,0,0.04)] border-l border-black/5 relative z-10 custom-scrollbar">
             
             <!-- Navbar -->
-            <div class="px-6 lg:px-10 py-6 flex items-center justify-between gs-reveal sticky top-0 bg-white/80 backdrop-blur-xl z-20 border-b border-black/5">
-                <div class="flex items-center gap-4">
+            <div class="px-4 sm:px-6 lg:px-10 py-5 sm:py-6 flex items-center justify-between gs-reveal sticky top-0 bg-white/80 backdrop-blur-xl z-20 border-b border-black/5">
+                <div class="flex items-center gap-3 sm:gap-4">
                     <label for="admin-drawer" class="btn btn-square btn-ghost btn-sm lg:hidden bg-charcoal/5 text-charcoal">
                         <i class="fi fi-rr-menu-burger"></i>
                     </label>
-                    <div class="flex items-center gap-2 text-charcoal font-serif text-2xl tracking-tight">
+                    <div class="flex items-center gap-2 text-charcoal font-serif text-lg sm:text-xl md:text-2xl tracking-tight">
                         Pengaturan
                     </div>
                 </div>
@@ -117,13 +117,13 @@
             </div>
 
             <!-- PAGE CONTENT -->
-            <div class="p-4 lg:p-10">
+            <div class="px-4 sm:px-6 lg:px-10 pb-24 pt-8">
                 <div class="max-w-4xl mx-auto">
                     
                     <!-- Header -->
-                    <div class="mb-12 gs-sb-item flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 border-b border-black/5 pb-8">
+                    <div class="mb-10 sm:mb-12 gs-sb-item flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 sm:gap-6 border-b border-black/5 pb-8">
                         <div>
-                            <h2 class="text-5xl lg:text-6xl font-serif text-charcoal leading-tight mb-3">Pengaturan Akun<br/><span class="italic text-sage/80">& Privasi.</span></h2>
+                            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-charcoal leading-tight mb-3">Pengaturan Akun<br/><span class="italic text-sage/80">& Privasi.</span></h2>
                             <p class="text-charcoal/60 max-w-xl font-medium">Perbarui identitas digital dan tingkatkan keamanan akses administratif Anda.</p>
                         </div>
                         <div class="hidden sm:flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-charcoal/40 bg-black/5 px-4 py-2 rounded-full">

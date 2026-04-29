@@ -111,11 +111,11 @@ session_start();
     <div id="smooth-wrapper">
         <div id="smooth-content" class="relative z-10 pt-32">
             
-            <main class="w-full max-w-7xl mx-auto px-6 lg:px-12 pb-24">
+            <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pb-24">
                 
                 <!-- Main Header & Image -->
                 <div class="mb-16">
-                    <h1 class="text-6xl md:text-8xl lg:text-[9rem] font-serif tracking-tight leading-[0.9] mb-10 gs-title text-charcoal text-center md:text-left drop-shadow-sm">
+                    <h1 class="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] font-serif tracking-tight leading-[0.9] mb-8 sm:mb-10 gs-title text-charcoal text-center md:text-left drop-shadow-sm">
                         Sejarah <span class="italic text-charcoal/80">&</span> Cerita
                     </h1>
                     <div class="w-full overflow-hidden gs-hero shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-[1.5rem] md:rounded-[2rem] border border-black/5 relative">
@@ -208,7 +208,7 @@ session_start();
                 <div class="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-sage/20 rounded-full blur-[100px] pointer-events-none"></div>
                 
                 <div class="max-w-3xl mx-auto text-center flex flex-col items-center relative z-10 text-white">
-                    <p class="text-3xl md:text-[3rem] font-serif leading-[1.1] mb-12 drop-shadow-lg">
+                    <p class="text-2xl sm:text-3xl md:text-[3rem] font-serif leading-[1.1] mb-10 sm:mb-12 drop-shadow-lg">
                         Tempat di mana sejarah dan keindahan alam bertemu dalam satu hembusan angin. <br><span class="italic text-white/70">Mulai petualanganmu.</span>
                     </p>
                     

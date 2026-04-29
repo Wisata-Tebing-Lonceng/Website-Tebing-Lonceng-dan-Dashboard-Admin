@@ -120,12 +120,12 @@
         <div class="drawer-content m-4 h-[calc(100vh-2rem)] overflow-y-auto bg-white rounded-xl shadow-[-10px_0_40px_rgba(0,0,0,0.04)] border-l border-black/5 relative z-10 custom-scrollbar">
 
             <!-- Sticky Navbar -->
-            <div class="px-6 lg:px-10 py-5 flex items-center justify-between sticky top-0 bg-white/80 backdrop-blur-xl z-20 border-b border-black/5 gs-item">
-                <div class="flex items-center gap-4">
+            <div class="px-4 sm:px-6 lg:px-10 py-5 flex items-center justify-between sticky top-0 bg-white/80 backdrop-blur-xl z-20 border-b border-black/5 gs-item">
+                <div class="flex items-center gap-3 sm:gap-4">
                     <label for="admin-drawer" class="btn btn-square btn-ghost btn-sm lg:hidden bg-charcoal/5 text-charcoal">
                         <i class="fi fi-rr-menu-burger"></i>
                     </label>
-                    <span class="text-charcoal font-serif text-xl tracking-tight">Konten Halaman</span>
+                    <span class="text-charcoal font-serif text-lg sm:text-xl tracking-tight">Konten Halaman</span>
                 </div>
                 <button @click="updateContent" :disabled="isLoading"
                     class="btn-save text-xs">
@@ -136,11 +136,11 @@
             </div>
 
             <!-- PAGE CONTENT -->
-            <div class="px-6 lg:px-10 pb-24 pt-10">
+            <div class="px-4 sm:px-6 lg:px-10 pb-24 pt-8">
                 <div class="max-w-5xl mx-auto">
 
                     <!-- Banner -->
-                    <div class="relative w-full rounded-[2rem] overflow-hidden p-8 lg:p-12 mb-8 gs-reveal flex flex-col justify-between min-h-[320px] lg:min-h-[380px] border border-black/5 bg-[#FBF9F6]">
+                    <div class="relative w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden p-6 sm:p-8 lg:p-12 mb-8 gs-reveal flex flex-col justify-between min-h-[280px] sm:min-h-[320px] lg:min-h-[380px] border border-black/5 bg-[#FBF9F6]">
                         
                         <!-- Project Palette Mesh Gradient Background -->
                         <div class="absolute -top-[10%] -right-[5%] w-[60%] h-[70%] bg-sage/30 rounded-full blur-[80px] pointer-events-none"></div>
@@ -163,11 +163,11 @@
                         </div>
 
                         <!-- Bottom: Typography -->
-                        <div class="relative z-10 mt-16 max-w-2xl">
-                            <h2 class="text-6xl lg:text-[5.5rem] font-serif text-charcoal leading-[1.05] tracking-tight mb-3">
+                        <div class="relative z-10 mt-12 sm:mt-16 max-w-2xl">
+                            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-charcoal leading-[1.05] tracking-tight mb-3">
                                 Kelola <br/> <span class="italic pr-4">narasi sistem</span>
                             </h2>
-                            <p class="text-charcoal/60 font-medium text-sm lg:text-base">Atur teks utama, informasi, hingga detail halaman — semua dari satu tempat terpusat.</p>
+                            <p class="text-charcoal/60 font-medium text-xs sm:text-sm lg:text-base">Atur teks utama, informasi, hingga detail halaman — semua dari satu tempat terpusat.</p>
                         </div>
                     </div>
 
@@ -250,9 +250,9 @@
                                 <i class="fi fi-rr-money-bill-wave text-charcoal/20 text-lg"></i>
                             </div>
                             <div class="card-body">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                     <!-- Normal -->
-                                    <div class="bg-[#FBF9F6] rounded-2xl p-5 border border-black/5">
+                                    <div class="bg-[#FBF9F6] rounded-[1.25rem] p-4 sm:p-5 border border-black/5">
                                         <div class="flex items-center gap-2 mb-3">
                                             <div class="w-7 h-7 rounded-full bg-charcoal/5 flex items-center justify-center">
                                                 <i class="fi fi-rr-ticket text-charcoal/50 text-xs"></i>
@@ -265,7 +265,7 @@
                                         </div>
                                     </div>
                                     <!-- Pelajar -->
-                                    <div class="bg-[#FBF9F6] rounded-2xl p-5 border border-black/5">
+                                    <div class="bg-[#FBF9F6] rounded-[1.25rem] p-4 sm:p-5 border border-black/5">
                                         <div class="flex items-center gap-2 mb-3">
                                             <div class="w-7 h-7 rounded-full bg-charcoal/5 flex items-center justify-center">
                                                 <i class="fi fi-rr-graduation-cap text-charcoal/50 text-xs"></i>
@@ -278,7 +278,7 @@
                                         </div>
                                     </div>
                                     <!-- Anak -->
-                                    <div class="bg-[#FBF9F6] rounded-2xl p-5 border border-black/5">
+                                    <div class="bg-[#FBF9F6] rounded-[1.25rem] p-4 sm:p-5 border border-black/5">
                                         <div class="flex items-center gap-2 mb-3">
                                             <div class="w-7 h-7 rounded-full bg-charcoal/5 flex items-center justify-center">
                                                 <i class="fi fi-rr-child-head text-charcoal/50 text-xs"></i>

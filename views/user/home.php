@@ -48,6 +48,8 @@
     <script type="module" src="https://unpkg.com/cally"></script>
     <!-- GSAP ScrollSmoother (Trial URL for local dev) -->
     <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script>
+    <!-- Swiper Web Components -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
@@ -110,17 +112,34 @@
             display: inline-block;
             transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        /* ── Review Marquee Cards ── */
-        .review-card-item {
-            min-height: 200px;
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        box-shadow 0.3s ease;
+        /* ── Swiper Testimonials Custom Styling ── */
+        swiper-container.review-swiper {
+            --swiper-theme-color: #1a1a1a;
+            --swiper-pagination-color: #c5a27d;
+            --swiper-pagination-bullet-inactive-color: #1a1a1a;
+            --swiper-pagination-bullet-inactive-opacity: 0.15;
+            --swiper-pagination-bullet-size: 8px;
+            --swiper-pagination-bullet-horizontal-gap: 6px;
+            --swiper-navigation-size: 16px;
+            padding: 20px 0 60px 0;
+            overflow: visible;
         }
-        .review-card-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+        swiper-slide {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.6;
+            transform: scale(0.85);
+            pointer-events: none;
         }
-        .reviews-marquee-wrapper { padding: 16px 0; }
+        swiper-slide.swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+            z-index: 10;
+        }
+        swiper-slide.swiper-slide-active .review-inner-card {
+            box-shadow: 0 15px 50px rgba(0,0,0,0.06);
+            border-color: rgba(0,0,0,0.05);
+        }
 
         /* ── DaisyUI input + textarea global override ── */
         .input, .textarea, .select {
@@ -294,7 +313,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="navbar rounded-full px-6 transition-all duration-500 border backdrop-blur-xl" 
                  :class="[isScrolled ? 'bg-white/80 border-black/5 shadow-md' : 'bg-black/30 border-white/10 shadow-lg']" id="navbar">
-                <div class="navbar-start w-1/2 lg:w-1/3">
+                <div class="navbar-start w-auto lg:w-1/3">
                     <!-- Desktop Nav -->
                     <div class="hidden lg:flex flex-row items-center gap-1 font-medium text-sm transition-colors duration-500">
 
@@ -360,9 +379,9 @@
                 <div class="navbar-center hidden lg:flex lg:w-1/3 justify-center">
                     <a href="#beranda" @click.prevent="scrollToSection('beranda')" class="text-2xl font-serif tracking-tight group transition-colors duration-500" :class="[isScrolled ? 'text-charcoal' : 'text-white']">Tebing<span class="italic opacity-80 group-hover:opacity-100 transition-opacity">Lonceng</span></a>
                 </div>
-                <!-- Mobile Center -->
-                <div class="navbar-center lg:hidden w-1/2 justify-end">
-                     <a href="#beranda" @click.prevent="scrollToSection('beranda')" class="text-xl font-serif tracking-tight group transition-colors duration-500" :class="[isScrolled ? 'text-charcoal' : 'text-white']">Tebing<span class="italic opacity-80 group-hover:opacity-100 transition-opacity">Lonceng</span></a>
+                <!-- Mobile Center: Logo centered between hamburger and edge -->
+                <div class="navbar-center flex-1 lg:hidden justify-center">
+                     <a href="#beranda" @click.prevent="scrollToSection('beranda')" class="text-lg font-serif tracking-tight group transition-colors duration-500" :class="[isScrolled ? 'text-charcoal' : 'text-white']">Tebing<span class="italic opacity-80 group-hover:opacity-100 transition-opacity">Lonceng</span></a>
                 </div>
                 
                 <div class="navbar-end hidden lg:flex w-1/3 justify-end gap-2">
@@ -396,16 +415,16 @@
             <div class="absolute inset-0 z-0 bg-black/55"></div>
 
             <!-- Content Container -->
-            <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center justify-center h-full min-h-screen pb-32 pt-20">
+            <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col items-center justify-center h-full min-h-screen pb-32 pt-20">
                 
-                <div class="w-full flex flex-col items-center justify-center text-center mt-auto mb-auto">
+                <div class="w-full flex flex-col items-center justify-center text-center mt-auto mb-auto px-2 sm:px-0">
                     <!-- Eyebrow (Opening Hours) -->
-                    <p class="text-white text-xs font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-2 gs-hero-text bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20">
+                    <p class="text-white text-[10px] sm:text-xs font-bold tracking-[0.15em] sm:tracking-[0.2em] uppercase mb-5 sm:mb-6 flex items-center gap-2 gs-hero-text bg-white/10 backdrop-blur-md px-3 sm:px-5 py-2 rounded-full border border-white/20 max-w-full text-center leading-relaxed">
                         <i class="fi fi-rr-clock-three"></i> <?= htmlspecialchars($settings['open_days'] ?? 'Buka Setiap Hari') ?>: <?= htmlspecialchars($settings['open_hours'] ?? '08:00 – 18:00') ?>
                     </p>
 
                     <!-- Main Headline -->
-                    <h1 class="text-6xl md:text-[5.5rem] lg:text-[7.5rem] tracking-tight mb-8 gs-hero-text font-serif text-white drop-shadow-2xl" style="line-height: 1.05;">
+                    <h1 class="w-full tracking-tight mb-5 sm:mb-8 gs-hero-text font-serif text-white drop-shadow-2xl" style="line-height: 1.05; font-size: clamp(1.5rem, 5.5vw + 0.5rem, 7.5rem);">
                         <?php 
                         $title = $settings['hero_title'] ?? 'Melangkah Menuju, Keheningan.';
                         $parts = explode(',', $title);
@@ -418,7 +437,7 @@
                     </h1>
 
                     <?php if (!empty($settings['hero_subtitle'])): ?>
-                    <p class="text-white/80 font-medium text-lg md:text-xl max-w-2xl mb-10 gs-hero-text drop-shadow-md">
+                    <p class="text-white/80 font-medium text-sm sm:text-base md:text-xl max-w-2xl mb-10 gs-hero-text drop-shadow-md px-2 sm:px-0">
                         <?= nl2br(htmlspecialchars($settings['hero_subtitle'])) ?>
                     </p>
                     <?php endif; ?>
@@ -492,7 +511,7 @@
         </section>
 
         <!-- THE STORY (Horizontal Scroll Assembly) -->
-        <section id="about" class="pt-28 pb-12 lg:pt-32 lg:pb-16 relative z-20 bg-[#fbf9f6] overflow-hidden hz-wrapper scroll-mt-20">
+        <section id="about" class="pt-16 sm:pt-24 lg:pt-32 pb-8 sm:pb-12 lg:pb-16 relative z-20 bg-[#fbf9f6] overflow-hidden hz-wrapper scroll-mt-20">
             
             <!-- Single Large Centered Blob -->
             <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none w-[110vw] h-[110vw] max-w-[900px] max-h-[900px] opacity-25 mix-blend-multiply text-sage blur-[80px]">
@@ -502,22 +521,22 @@
             </div>
 
             <!-- Section Title -->
-            <div class="max-w-7xl mx-auto px-6 lg:px-8 mb-8 gs-bento-title text-center relative z-10">
-                <h2 class="text-5xl lg:text-6xl font-serif text-charcoal leading-[0.95]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 gs-bento-title text-center relative z-10">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-charcoal leading-[0.95]">
                     Lebih dari sekadar tebing. <br><span class="italic text-charcoal/35">Sebuah mahakarya.</span>
                 </h2>
                 <?php if (!empty($settings['sejarah_text'])): ?>
-                <p class="text-charcoal/60 mt-6 max-w-2xl mx-auto font-medium leading-relaxed">
+                <p class="text-charcoal/60 mt-4 sm:mt-6 max-w-2xl mx-auto font-medium leading-relaxed text-sm sm:text-base">
                     <?= nl2br(htmlspecialchars($settings['sejarah_text'])) ?>
                 </p>
                 <?php endif; ?>
             </div>
 
             <!-- Horizontal Container -->
-            <div class="hz-container w-full md:w-max flex flex-col md:flex-row md:flex-nowrap md:h-[62vh] px-6 lg:px-10 pb-0 items-center justify-center overflow-visible gap-4 md:gap-0">
+            <div class="hz-container w-full md:w-max flex flex-col md:flex-row md:flex-nowrap md:h-[62vh] px-4 sm:px-6 lg:px-10 pb-0 items-center justify-center overflow-visible gap-3 sm:gap-4 md:gap-0">
                 
                 <!-- CARD 1: Sejarah (Magazine Cover) -->
-                <div class="hz-panel-wrapper w-full md:w-[30rem] h-[55vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-center">
+                <div class="hz-panel-wrapper w-full md:w-[30rem] h-[42vh] sm:h-[50vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-center">
                     <div id="gs-card-sejarah" class="w-full h-full rounded-[2rem] relative overflow-hidden group shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-black/5 bg-white flex flex-col p-3 transition-transform duration-500 hover:-translate-y-2">
                         
                         <!-- Header row -->
@@ -545,7 +564,7 @@
                 </div>
 
                 <!-- CARD 2: Ulasan (Split Reviews) -->
-                <div class="hz-panel-wrapper w-full md:w-[30rem] h-[55vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-center">
+                <div class="hz-panel-wrapper w-full md:w-[30rem] h-[42vh] sm:h-[50vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-center">
                     <div class="w-full h-full rounded-[2rem] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.05)] border border-black/5 flex flex-col overflow-hidden transition-transform duration-500 hover:-translate-y-2">
                         
                         <!-- Review 1 -->
@@ -578,7 +597,7 @@
                 </div>
 
                 <!-- CARD 3: Statistik (Bento) -->
-                <div class="hz-panel-wrapper w-full md:w-[28rem] h-[55vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-center">
+                <div class="hz-panel-wrapper w-full md:w-[28rem] h-[42vh] sm:h-[50vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-center">
                     <div class="w-full h-full rounded-[2rem] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.05)] border border-black/5 p-3 flex flex-col gap-3 transition-transform duration-500 hover:-translate-y-2">
                         
                         <!-- Main stat -->
@@ -608,7 +627,7 @@
                 </div>
 
                 <!-- CARD 4: Eksplorasi (Gallery) -->
-                <div class="hz-panel-wrapper w-full md:w-[30rem] h-[55vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-center">
+                <div class="hz-panel-wrapper w-full md:w-[30rem] h-[42vh] sm:h-[50vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-center">
                     <div class="w-full h-full rounded-[2rem] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.05)] border border-black/5 p-3 flex flex-col group transition-transform duration-500 hover:-translate-y-2">
                         
                         <!-- Image -->
@@ -638,7 +657,7 @@
                 </div>
 
                 <!-- CARD 5: Lokasi / Maps -->
-                <div class="hz-panel-wrapper w-full md:w-[50vw] h-[55vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-start relative group">
+                <div class="hz-panel-wrapper w-full md:w-[50vw] h-[42vh] sm:h-[50vh] md:h-full flex-shrink-0 md:mx-3 flex items-center justify-start relative group">
                     <div class="gs-morph-map w-full md:w-[30rem] h-full rounded-[2rem] relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-black/5 bg-white p-2 transition-transform duration-500 hover:-translate-y-2">
                         <div class="w-full h-full rounded-[1.5rem] relative overflow-hidden">
                             <iframe 
@@ -670,13 +689,13 @@
 
 
         <!-- HOMESTAY HIGHLIGHT SECTION — Split Layout & Gallery -->
-        <section id="homestay" class="py-20 lg:py-28 bg-[#fbf9f6] relative font-sans border-t border-black/5 overflow-hidden">
+        <section id="homestay" class="py-12 sm:py-16 lg:py-28 bg-[#fbf9f6] relative font-sans border-t border-black/5 overflow-hidden">
             
             <div class="max-w-[1400px] mx-auto px-4 lg:px-8 relative z-10">
                 
                 <!-- SECTION 1: Top Split Layout -->
-                <div class="bg-gradient-to-br from-[#e9ece6] to-[#f4f5f0] rounded-[2.5rem] p-6 lg:p-12 mb-8 shadow-sm border border-black/5 gs-hs-top">
-                    <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-stretch">
+                <div class="bg-gradient-to-br from-[#e9ece6] to-[#f4f5f0] rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] p-5 sm:p-6 lg:p-12 mb-6 sm:mb-8 shadow-sm border border-black/5 gs-hs-top">
+                    <div class="flex flex-col lg:flex-row gap-8 sm:gap-12 lg:gap-16 items-stretch">
                         
                         <!-- Left: Text & Details -->
                         <div class="w-full lg:w-1/2 flex flex-col">
@@ -684,50 +703,12 @@
                                 <i class="fi fi-rr-bed text-sage"></i> Akomodasi Premium
                             </div>
                             
-                            <h2 class="text-4xl lg:text-5xl xl:text-6xl font-serif text-charcoal leading-[1.1] mb-8 gs-hs-stagger">
+                            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-serif text-charcoal leading-[1.1] mb-6 sm:mb-8 gs-hs-stagger">
                                 <?= $settings['hs_title'] ?? 'Kenyamanan di Balik<br><span class="italic text-sage">Tebing Lonceng.</span>' ?>
                             </h2>
                             
-                            <!-- Accordion Details -->
-                            <div class="join join-vertical w-full mb-10 bg-white/40 rounded-2xl border border-black/5 shadow-sm gs-hs-stagger">
-                                <div class="collapse collapse-arrow join-item border-b border-black/5">
-                                    <input type="radio" name="hs-accordion" checked="checked" /> 
-                                    <div class="collapse-title text-sm font-bold text-charcoal flex items-center gap-3">
-                                        <i class="fi fi-rr-door-open text-sage text-lg"></i> <?= htmlspecialchars($settings['hs_acc1_title'] ?? 'Fasilitas Kamar & Interior') ?>
-                                    </div>
-                                    <div class="collapse-content text-sm text-charcoal/70 leading-relaxed font-medium">
-                                        <?= $settings['hs_acc1_content'] ?? '<p>Kabin kayu minimalis yang modern dan bersih. Dilengkapi dengan kasur double bed, AC, area duduk santai dekat jendela, teko listrik (kettle), air mineral, kopi/teh, perlengkapan ibadah, dan nakas.</p>' ?>
-                                    </div>
-                                </div>
-                                <div class="collapse collapse-arrow join-item border-b border-black/5">
-                                    <input type="radio" name="hs-accordion" /> 
-                                    <div class="collapse-title text-sm font-bold text-charcoal flex items-center gap-3">
-                                        <i class="fi fi-rr-bath text-sage text-lg"></i> <?= htmlspecialchars($settings['hs_acc2_title'] ?? 'Kamar Mandi') ?>
-                                    </div>
-                                    <div class="collapse-content text-sm text-charcoal/70 leading-relaxed font-medium">
-                                        <?= $settings['hs_acc2_content'] ?? '<p>Fasilitas mandi yang bersih dengan lantai keramik putih, kloset duduk yang dilengkapi shower spray (bidet), serta bak mandi dan gayung.</p>' ?>
-                                    </div>
-                                </div>
-                                <div class="collapse collapse-arrow join-item border-b border-black/5">
-                                    <input type="radio" name="hs-accordion" /> 
-                                    <div class="collapse-title text-sm font-bold text-charcoal flex items-center gap-3">
-                                        <i class="fi fi-rr-document-signed text-sage text-lg"></i> <?= htmlspecialchars($settings['hs_acc3_title'] ?? 'Aturan & Kebijakan') ?>
-                                    </div>
-                                    <div class="collapse-content text-sm text-charcoal/70 leading-relaxed font-medium">
-                                        <?= $settings['hs_acc3_content'] ?? '<ul class="list-disc pl-4 space-y-1"><li>Check-in 14.00 WITA, Check-out 12.00 WITA.</li><li>Pembayaran lunas 100% sebelum check-in.</li><li>Deposit Rp100.000 & KTP asli sebagai jaminan.</li><li>Dilarang membawa hewan, sajam, miras, narkoba, & makanan berbau tajam.</li></ul>' ?>
-                                    </div>
-                                </div>
-                                <div class="collapse collapse-arrow join-item">
-                                    <input type="radio" name="hs-accordion" /> 
-                                    <div class="collapse-title text-sm font-bold text-charcoal flex items-center gap-3">
-                                        <i class="fi fi-rr-cabin text-sage text-lg"></i> <?= htmlspecialchars($settings['hs_acc4_title'] ?? 'Eksterior & Lingkungan') ?>
-                                    </div>
-                                    <div class="collapse-content text-sm text-charcoal/70 leading-relaxed font-medium">
-                                        <?= $settings['hs_acc4_content'] ?? '<p>Bangunan rumah panggung berbahan kayu dengan balkon kecil. Lokasi sangat privat dan sempurna untuk menikmati pemandangan city light Samarinda dari ketinggian.</p>' ?>
-                                    </div>
-                                </div>
-                            </div>
-                            
+
+
                             <!-- Stats / Mini Info -->
                             <div class="flex flex-wrap items-center gap-6 md:gap-10 mb-10 pt-6 border-t border-black/10 gs-hs-stagger">
                                 <div>
@@ -776,7 +757,7 @@
                         <div class="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-bold text-white uppercase tracking-widest border border-white/20 mb-4">
                             Galeri Penginapan
                         </div>
-                        <h3 class="text-4xl lg:text-6xl font-serif text-white leading-tight drop-shadow-lg">
+                        <h3 class="text-3xl sm:text-4xl lg:text-6xl font-serif text-white leading-tight drop-shadow-lg">
                             Dibuat untuk <br>
                             <span class="text-white/80 italic">Kenyamanan Maksimal</span>
                         </h3>
@@ -834,7 +815,7 @@
         <!-- ══════════════════════════════════════════════════════════════ -->
         <!-- THE EXPERIENCE — Infinite Cards                               -->
         <!-- ══════════════════════════════════════════════════════════════ -->
-        <section id="fasilitas" class="border-t border-black/5 relative py-32 overflow-hidden font-sans">
+        <section id="fasilitas" class="border-t border-black/5 relative py-16 sm:py-24 lg:py-32 overflow-hidden font-sans">
             <?php
                 $carouselCards = array_values($fasilitas ?? []);
                 if (empty($carouselCards)) {
@@ -851,12 +832,12 @@
                 $infiniteCards = array_merge($carouselCards, $carouselCards, $carouselCards);
             ?>
 
-            <div class="text-center mb-16 relative z-20 gs-ulasan px-6">
+            <div class="text-center mb-10 sm:mb-16 relative z-20 gs-ulasan px-4 sm:px-6">
                 <p class="text-sage text-xs font-black tracking-[0.3em] uppercase mb-4">Fasilitas & Spot</p>
-                <h2 class="text-5xl md:text-6xl lg:text-7xl font-serif text-charcoal mb-6 leading-tight max-w-4xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif text-charcoal mb-4 sm:mb-6 leading-tight max-w-4xl mx-auto">
                     Eksplorasi Ruang <span class="italic text-sage/80">Ikonik.</span>
                 </h2>
-                <p class="text-gray-400 font-medium max-w-xl mx-auto text-base md:text-lg">Beragam spot eksklusif yang dirancang untuk memanjakan visual dan menghadirkan ketenangan.</p>
+                <p class="text-gray-400 font-medium max-w-xl mx-auto text-sm sm:text-base md:text-lg">Beragam spot eksklusif yang dirancang untuk memanjakan visual dan menghadirkan ketenangan.</p>
             </div>
 
             <!-- Infinite Scroll Container -->
@@ -934,7 +915,7 @@
 
         <!-- THE PROOF (Ulasan) — Infinite Marquee + Submission Form -->
 
-        <section id="reviews" class="pt-32 pb-40 bg-base overflow-hidden relative">
+        <section id="reviews" class="pt-16 sm:pt-24 lg:pt-32 pb-20 sm:pb-28 lg:pb-40 bg-base overflow-hidden relative">
 
             <?php
                 // DB columns: id, nama, kesan, created_at
@@ -957,67 +938,47 @@
                 $totalArch = count($reviewsData);
             ?>
 
-            <!-- ── Arch Gallery: Infinite Wheel (trig-based ring) ── -->
-            <?php
-                $containerH = 650;  // px — container height
-                $R          = 4000; // px — extreme massive radius to flatten the arch perfectly
-                $D          = 3550; // px — offset perfectly matching the radius to keep cards in view
-                $cardW      = 340;  // card width px (much wider now)
-                $cardH      = 380;  // card height px (much taller now)
-                $pivotY     = $containerH + $D; // circle center Y from container top
-            ?>
-            <div class="relative w-full" style="height: <?= $containerH ?>px; overflow: visible;">
+            <!-- ── Swiper Testimonials (Infinite Scroll & Centered) ── -->
+            <div class="w-full max-w-6xl mx-auto mt-6 sm:mt-10 z-10 relative px-4 sm:px-6">
                 
-                <!-- The Rotating Ring -->
-                <div class="gs-arch-ring absolute w-full h-full top-0 left-0" style="transform-origin: 50% <?= $pivotY ?>px;">
-                    <?php foreach($reviewsData as $idx => $rev):
-                        // Distribute cards evenly across the full 360 degrees
-                        $angleDeg  = $idx * (360 / $totalArch);
-                        $angleRad  = deg2rad($angleDeg);
-                        $xPx       = $R * sin($angleRad);            // px from container center-x
-                        $yCtr      = $pivotY - $R * cos($angleRad);  // card center, px from container top
-                        $leftCSS   = "calc(50% + {$xPx}px - " . ($cardW / 2) . "px)";
-                        $topCSS    = ($yCtr - $cardH / 2) . "px";
-                    ?>
-                    <div class="gs-arch-card absolute bg-white rounded-[2.5rem] border border-black/5 shadow-[0_15px_50px_rgba(0,0,0,0.06)] cursor-pointer flex flex-col items-center justify-center text-center px-8 py-8"
-                         data-angle="<?= $angleDeg ?>"
-                         style="
-                             width: <?= $cardW ?>px;
-                             height: <?= $cardH ?>px;
-                             left: <?= $leftCSS ?>;
-                             top: <?= $topCSS ?>;
-                             transform: rotate(<?= $angleDeg ?>deg);
-                         ">
-                         
-                        <div class="w-14 h-14 rounded-[1.25rem] bg-sage/10 text-sage flex items-center justify-center mb-6 border border-sage/15 flex-shrink-0">
-                            <i class="fi fi-rr-quote-right text-xl"></i>
-                        </div>
-                        <p class="text-base font-serif italic leading-relaxed text-charcoal/80 mb-6 flex-grow flex items-center justify-center">
-                            &ldquo;<?= htmlspecialchars($rev['kesan'] ?? '') ?>&rdquo;
-                        </p>
-                        <div class="mt-auto flex flex-col items-center">
-                            <span class="font-bold text-charcoal text-sm mb-1.5"><?= htmlspecialchars($rev['nama'] ?? '') ?></span>
-                            <span class="text-[10px] text-sage font-black uppercase tracking-widest">Pengunjung</span>
-                        </div>
+                <div class="text-center relative mb-10 sm:mb-16 px-4 sm:px-6">
+                    <h2 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] font-sans font-bold text-black/[0.03] whitespace-nowrap pointer-events-none z-0 tracking-tighter">
+                        Testimonials
+                    </h2>
+                    <div class="relative z-10 gs-arch-text">
+                        <p class="text-clay text-xs font-bold tracking-[0.2em] uppercase mb-4">Ulasan Pengunjung</p>
+                        <h3 class="text-3xl sm:text-4xl md:text-5xl font-sans font-bold text-charcoal tracking-tight">Kesan Mereka</h3>
                     </div>
-                    <?php endforeach; ?>
                 </div>
 
-                <!-- Center heading overlay -->
-                <div class="absolute bottom-[20px] left-1/2 -translate-x-1/2 text-center z-20 gs-arch-text w-full px-6 pointer-events-none">
-                    <p class="text-sage text-[10px] font-black tracking-[0.3em] uppercase mb-3">Ulasan Pengunjung</p>
-                    <h2 class="text-5xl md:text-6xl lg:text-7xl font-serif text-charcoal leading-tight">
-                        Kesan <span class="italic text-sage/80">Mereka.</span>
-                    </h2>
-                    <p class="text-charcoal/50 max-w-sm mx-auto text-sm mt-4 font-sans leading-relaxed">
-                        Kata-kata jujur dari mereka yang merasakan ketenangan Tebing Lonceng.
-                    </p>
+                <div class="relative w-full mt-10 gs-arch-ring">
+                    <swiper-container 
+                        init="false"
+                        class="review-swiper"
+                        id="reviewSwiper"
+                    >
+                        <?php foreach($baseReviews as $idx => $rev): ?>
+                        <swiper-slide class="py-10">
+                            <div class="review-inner-card bg-white rounded-xl p-8 flex flex-col items-center text-center border border-transparent h-full min-h-[300px] shadow-sm transition-all duration-300">
+                                <div class="w-14 h-14 rounded-full bg-sage/10 text-sage flex items-center justify-center font-bold text-xl border border-sage/15 font-serif mb-4 flex-shrink-0">
+                                    <?= strtoupper(substr($rev['nama'] ?? 'U', 0, 1)) ?>
+                                </div>
+                                <h4 class="font-bold text-lg mb-1 leading-tight" style="color: #1a1a1a !important;"><?= htmlspecialchars($rev['nama'] ?? '') ?></h4>
+                                <span class="text-[11px] font-semibold tracking-wide uppercase mb-6" style="color: rgba(26,26,26,0.6) !important;">Pengunjung</span>
+                                
+                                <p class="text-sm md:text-base font-sans leading-relaxed font-medium flex-grow flex items-center justify-center" style="color: #1a1a1a !important;">
+                                    &ldquo;<?= htmlspecialchars($rev['kesan'] ?? '') ?>&rdquo;
+                                </p>
+                            </div>
+                        </swiper-slide>
+                        <?php endforeach; ?>
+                    </swiper-container>
                 </div>
             </div>
 
             <!-- ── Review Submission Form ── -->
-            <div class="w-full max-w-4xl mx-auto px-6 mt-20 gs-review-form">
-                <div class="bg-white rounded-[2.5rem] border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.07)] p-8 md:p-12">
+            <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 mt-20 gs-review-form">
+                <div class="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.07)] p-6 sm:p-8 md:p-12">
 
                 <?php if (isset($_SESSION['user_id'])): ?>
                     <!-- ── STATE: LOGGED IN — Tampilkan form ulasan ── -->
@@ -1139,26 +1100,26 @@
         </section>
 
         <!-- CTA GALERI KOMUNITAS -->
-        <section id="cta-galeri" class="py-12 bg-white relative font-sans border-t border-black/5 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-                <div class="bg-gradient-to-r from-sage/10 to-[#f4f5f0] rounded-[3rem] p-10 md:p-14 border border-sage/15 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group">
+        <section id="cta-galeri" class="py-8 sm:py-12 bg-white relative font-sans border-t border-black/5 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="bg-gradient-to-r from-sage/10 to-[#f4f5f0] rounded-[1.5rem] sm:rounded-[2.5rem] lg:rounded-[3rem] p-6 sm:p-10 md:p-14 border border-sage/15 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 relative overflow-hidden group">
                     <!-- Decor -->
                     <div class="absolute right-0 top-0 w-64 h-64 bg-sage/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/4 pointer-events-none group-hover:scale-125 transition-transform duration-1000"></div>
                     
                     <div class="flex-1 max-w-2xl relative z-10">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-sage/10 rounded-full text-[10px] font-black text-sage tracking-[0.2em] uppercase mb-5 border border-sage/20">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-sage/10 rounded-full text-[10px] font-black text-sage tracking-[0.2em] uppercase mb-4 sm:mb-5 border border-sage/20">
                             <i class="fi fi-rr-camera"></i> Galeri Komunitas
                         </div>
-                        <h2 class="text-4xl md:text-5xl font-serif text-charcoal leading-tight mb-4">
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-charcoal leading-tight mb-3 sm:mb-4">
                             Punya kenangan visual yang tak terlupakan?
                         </h2>
-                        <p class="text-charcoal/60 font-medium text-base leading-relaxed">
+                        <p class="text-charcoal/60 font-medium text-sm sm:text-base leading-relaxed">
                             Bagikan jepretan terbaik Anda di Tebing Lonceng. Momen Anda berharga dan bisa menginspirasi banyak pengunjung lainnya.
                         </p>
                     </div>
                     
-                    <div class="relative z-10 flex-shrink-0">
-                        <a href="views/user/galeri.php" class="btn bg-charcoal hover:bg-sage text-white rounded-full px-8 h-14 font-bold border-none shadow-[0_15px_30px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 transition-all duration-300 group/btn">
+                    <div class="relative z-10 flex-shrink-0 w-full sm:w-auto">
+                        <a href="views/user/galeri.php" class="btn bg-charcoal hover:bg-sage text-white rounded-full px-6 sm:px-8 h-12 sm:h-14 font-bold border-none shadow-[0_15px_30px_rgba(0,0,0,0.15)] flex items-center justify-center gap-3 transition-all duration-300 group/btn w-full sm:w-auto">
                             Bagikan Momen Anda 
                             <i class="fi fi-rr-arrow-up-right text-sm group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"></i>
                         </a>
@@ -1170,8 +1131,8 @@
         <!-- THE SOCIAL MEDIA PROMO -->
 
         <!-- ══════════════════════════════════════════════════════════════ -->
-        <section id="social-media" class="py-20 bg-white font-sans px-6 lg:px-8">
-            <div class="max-w-7xl mx-auto bg-[#133c2a] rounded-[3rem] p-10 md:p-16 lg:p-20 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden relative shadow-2xl">
+        <section id="social-media" class="py-10 sm:py-16 lg:py-20 bg-white font-sans px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto bg-[#133c2a] rounded-[2rem] sm:rounded-[3rem] p-6 sm:p-10 md:p-16 lg:p-20 flex flex-col md:flex-row items-center justify-between gap-8 sm:gap-12 overflow-hidden relative shadow-2xl">
                 
                 <!-- Blurred Background Image -->
                 <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -1180,37 +1141,35 @@
 
                 <!-- Left Content -->
                 <div class="flex-1 text-white z-10 relative">
-                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif mb-6 leading-tight">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-4 sm:mb-6 leading-tight">
                         Tetap Terhubung <br>dengan <span class="italic text-sage">Kami.</span>
                     </h2>
-                    <p class="text-white/80 font-medium text-base md:text-lg max-w-md mb-10 leading-relaxed">
+                    <p class="text-white/80 font-medium text-sm sm:text-base md:text-lg max-w-md mb-6 sm:mb-10 leading-relaxed">
                         Ikuti perjalanan visual kami, dapatkan info terbaru, dan bagikan momen liburan Anda di Tebing Lonceng.
                     </p>
-                    <a href="https://instagram.com/tebinglonceng" target="_blank" class="inline-flex items-center gap-4 bg-white text-[#133c2a] px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-sage transition-all duration-300 group shadow-xl">
+                    <a href="https://instagram.com/tebinglonceng" target="_blank" class="inline-flex items-center gap-3 bg-white text-[#133c2a] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-sage transition-all duration-300 group shadow-xl">
                         Ikuti Instagram
                         <i class="fi fi-rr-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
 
-                <!-- Right Mockup: Dual Phones -->
-                <div class="flex-shrink-0 z-10 relative w-full md:w-[400px] h-[450px] md:h-[550px] flex justify-center mt-12 md:mt-0">
+                <!-- Right Mockup: Dual Phones — hidden on small mobile, visible from sm -->
+                <div class="flex-shrink-0 z-10 relative w-full sm:w-[320px] md:w-[400px] h-[320px] sm:h-[420px] md:h-[550px] hidden sm:flex justify-center mt-8 md:mt-0">
                     
                     <!-- Back Phone (Image) -->
-                    <div class="absolute right-0 md:-right-8 top-12 md:top-24 mockup-phone border-white/60 bg-black shadow-2xl transform rotate-12 hover:rotate-6 transition-transform duration-700 w-[200px] md:w-[240px] z-10 opacity-80 hover:opacity-100">
+                    <div class="absolute right-0 md:-right-8 top-8 sm:top-12 md:top-24 mockup-phone border-white/60 bg-black shadow-2xl transform rotate-12 hover:rotate-6 transition-transform duration-700 w-[160px] sm:w-[200px] md:w-[240px] z-10 opacity-80 hover:opacity-100">
                       <div class="mockup-phone-camera"></div>
                       <div class="mockup-phone-display">
-                        <img alt="Instagram Tebing Lonceng" src="assets\img\phone\Screen Shot 2026-04-25 at 20.52.57.png" class="w-full h-full object-cover" />
+                        <img alt="Instagram Tebing Lonceng" src="assets/img/phone/Screen Shot 2026-04-25 at 20.52.57.png" class="w-full h-full object-cover" />
                       </div>
                     </div>
 
                     <!-- Front Phone (Video) -->
-                    <div class="absolute left-8 md:left-0 top-0 mockup-phone border-white bg-black shadow-2xl transform -rotate-6 hover:rotate-0 transition-transform duration-700 w-[240px] md:w-[280px] z-20">
+                    <div class="absolute left-4 sm:left-8 md:left-0 top-0 mockup-phone border-white bg-black shadow-2xl transform -rotate-6 hover:rotate-0 transition-transform duration-700 w-[190px] sm:w-[240px] md:w-[280px] z-20">
                       <div class="mockup-phone-camera"></div>
                       <div class="mockup-phone-display">
-                        <!-- Video Container placeholder -->
                         <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                            <!-- Change the src to your actual video path -->
-                            <source src="assets\vd\promo.webm" type="video/mp4">
+                            <source src="assets/vd/promo.webm" type="video/mp4">
                         </video>
                       </div>
                     </div>
@@ -1223,9 +1182,9 @@
     </main>
 
     <!-- THE CALL (Minimalist Footer) -->
-    <footer class="bg-base border-t border-charcoal/10 pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center text-center">
-            <h2 class="text-6xl font-serif text-charcoal mb-8 gs-ulasan">Siap untuk <span class="italic text-sage">Eksplorasi?</span></h2>
+    <footer class="bg-base border-t border-charcoal/10 pt-12 sm:pt-16 lg:pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-charcoal mb-6 sm:mb-8 gs-ulasan">Siap untuk <span class="italic text-sage">Eksplorasi?</span></h2>
 
             <!-- DaisyUI 3D Hover Card -->
             <div class="hover-3d mb-10 gs-ulasan w-full max-w-2xl">
@@ -1247,7 +1206,7 @@
             </button>
 
             <!-- Ticket Pricing Row -->
-            <div class="flex flex-col md:flex-row justify-center items-center gap-10 md:gap-24 border-t border-charcoal/10 pt-12 mb-20 w-full gs-ulasan">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-10 md:gap-16 lg:gap-24 border-t border-charcoal/10 pt-8 sm:pt-12 mb-12 sm:mb-20 w-full gs-ulasan">
                 <div class="flex flex-col items-center">
                     <span class="text-charcoal font-serif text-3xl md:text-4xl mb-1">Rp <?= htmlspecialchars($settings['ticket_price'] ?? '10.000') ?></span>
                     <span class="text-charcoal/40 text-[10px] md:text-xs font-bold uppercase tracking-widest">Wisatawan Umum</span>
@@ -1264,7 +1223,7 @@
                 </div>
             </div>
 
-            <div class="w-full flex flex-col md:flex-row justify-between items-center border-t border-charcoal/10 pt-8 text-charcoal/50 text-xs font-bold tracking-widest uppercase">
+            <div class="w-full flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 border-t border-charcoal/10 pt-6 sm:pt-8 text-charcoal/50 text-xs font-bold tracking-widest uppercase">
                 <p>Tebing Lonceng Resort © <?= date('Y') ?></p>
                 <div class="flex gap-6 mt-4 md:mt-0">
                     <a href="#" class="hover:text-charcoal transition-colors">Instagram</a>
@@ -1281,7 +1240,7 @@
     <!-- VUE TICKET MODAL -->
     <Transition name="fade">
         <div v-cloak v-if="isTicketModalOpen" class="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/60 backdrop-blur-sm p-4" @click="closeTicketModal">
-            <div class="bg-base w-full max-w-lg rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative" @click.stop="showCalendar = false">
+            <div class="bg-base w-full max-w-lg rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] p-5 sm:p-8 md:p-12 shadow-2xl relative" @click.stop="showCalendar = false">
                 <button @click="isTicketModalOpen = false" class="absolute top-6 right-6 w-10 h-10 bg-charcoal/5 rounded-full text-charcoal/50 hover:bg-charcoal/10 hover:text-charcoal flex items-center justify-center transition-colors">
                     <i class="fi fi-rr-cross"></i>
                 </button>
@@ -1975,37 +1934,16 @@
                 // REVIEWS SECTION — Trig-Positioned Arch + Form Animations
                 // ══════════════════════════════════════════════════════════════════════
 
-                // ── Infinite Scroll Arch Ring ──
+                // ── Swiper Testimonials Initialization ──
                 const archRing = document.querySelector('.gs-arch-ring');
                 if (archRing) {
-                    // Entrance: fade in the whole ring from below
+                    // Entrance: fade in the swiper from below
                     gsap.from(archRing, {
                         scrollTrigger: { trigger: "#reviews", start: "top 65%" },
                         opacity: 0,
-                        y: 100,
+                        y: 80,
                         duration: 1.5,
                         ease: "power3.out"
-                    });
-
-                    // Continuous rotation (infinite scroll)
-                    const ringAnim = gsap.to(archRing, {
-                        rotation: -360,
-                        duration: 250, // 120 seconds for a full 360 rotation = slow, elegant scroll
-                        repeat: -1,
-                        ease: "none"
-                    });
-
-                    // Interactive Hover: pause ring rotation & lift individual card
-                    const archCards = gsap.utils.toArray('.gs-arch-card');
-                    archCards.forEach(card => {
-                        card.addEventListener('mouseenter', () => {
-                            ringAnim.pause();
-                            gsap.to(card, { scale: 1.05, duration: 0.3, ease: "power2.out" });
-                        });
-                        card.addEventListener('mouseleave', () => {
-                            ringAnim.play();
-                            gsap.to(card, { scale: 1.0, duration: 0.3, ease: "power2.out" });
-                        });
                     });
                 }
 
@@ -2014,6 +1952,49 @@
                     scrollTrigger: { trigger: "#reviews", start: "top 70%" },
                     y: 40, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out"
                 });
+
+                const reviewSwiperEl = document.getElementById('reviewSwiper');
+                if (reviewSwiperEl) {
+                    const swiperParams = {
+                        loop: true,
+                        autoplay: {
+                            delay: 3500,
+                            disableOnInteraction: false,
+                        },
+                        centeredSlides: true,
+                        slidesPerView: 1.2,
+                        spaceBetween: 20,
+                        pagination: false,
+                        navigation: true,
+                        breakpoints: {
+                            640: { slidesPerView: 1.5, spaceBetween: 20 },
+                            768: { slidesPerView: 2, spaceBetween: 30 },
+                            1024: { slidesPerView: 2.5, spaceBetween: 40 },
+                            1280: { slidesPerView: 3, spaceBetween: 50 },
+                        },
+                        injectStyles: [
+                            `
+                            .swiper-button-next,
+                            .swiper-button-prev {
+                                background-color: white;
+                                width: 44px;
+                                height: 44px;
+                                border-radius: 50%;
+                                border: 1px solid rgba(0,0,0,0.05);
+                                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+                                color: #1a1a1a;
+                            }
+                            .swiper-button-next::after,
+                            .swiper-button-prev::after {
+                                font-size: 14px;
+                                font-weight: bold;
+                            }
+                            `
+                        ]
+                    };
+                    Object.assign(reviewSwiperEl, swiperParams);
+                    reviewSwiperEl.initialize();
+                }
 
                 // Review form entrance
                 gsap.from(".gs-review-form", {

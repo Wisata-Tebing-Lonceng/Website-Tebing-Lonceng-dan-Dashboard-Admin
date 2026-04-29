@@ -46,8 +46,8 @@
         .sidebar-heading { display:flex; align-items:center; justify-content:space-between; font-size:0.625rem; font-weight:800; color:rgba(26,26,26,0.4); margin-bottom:0.25rem; margin-top:1.5rem; padding:0 1rem; text-transform:uppercase; letter-spacing:0.1em; }
         .drawer-side .drawer-overlay { background-color:rgba(0,0,0,0.2); backdrop-filter:blur(4px); }
 
-        .table-container { background-color:white; border-radius:1.5rem; border:1px solid rgba(0,0,0,0.05); overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.03); }
-        .table-container th { background-color:transparent; color:rgba(26,26,26,0.5); font-weight:600; font-size:0.6875rem; padding:1rem 1.5rem; text-transform:uppercase; letter-spacing:0.05em; border-bottom:1px solid rgba(0,0,0,0.05); }
+        .table-container { background-color:white; border-radius:1.5rem; border:1px solid rgba(0,0,0,0.05); overflow-x:auto; overflow-y:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.03); }
+        .table-container th { background-color:transparent; color:rgba(26,26,26,0.5); font-weight:600; font-size:0.6875rem; padding:1rem 1.5rem; text-transform:uppercase; letter-spacing:0.05em; border-bottom:1px solid rgba(0,0,0,0.05); white-space:nowrap; }
         .table-container td { padding:1rem 1.5rem; border-bottom:1px solid rgba(0,0,0,0.02); font-size:0.875rem; }
 
         .tab-pill { padding:0.5rem 1.25rem; border-radius:999px; font-size:0.75rem; font-weight:700; cursor:pointer; transition:all 0.2s; border:1px solid rgba(0,0,0,0.06); }
@@ -70,12 +70,12 @@
         <div class="drawer-content m-4 h-[calc(100vh-2rem)] overflow-y-auto bg-white rounded-xl shadow-[-10px_0_40px_rgba(0,0,0,0.04)] border-l border-black/5 relative z-10 custom-scrollbar">
 
             <!-- Navbar -->
-            <div class="px-6 lg:px-10 py-6 flex items-center justify-between sticky top-0 bg-white/80 backdrop-blur-xl z-20 border-b border-black/5">
-                <div class="flex items-center gap-4">
+            <div class="px-4 sm:px-6 lg:px-10 py-5 sm:py-6 flex items-center justify-between sticky top-0 bg-white/80 backdrop-blur-xl z-20 border-b border-black/5">
+                <div class="flex items-center gap-3 sm:gap-4">
                     <label for="admin-drawer" class="btn btn-square btn-ghost btn-sm lg:hidden bg-charcoal/5 text-charcoal">
                         <i class="fi fi-rr-menu-burger"></i>
                     </label>
-                    <div class="text-charcoal font-serif text-2xl tracking-tight">Galeri Foto</div>
+                    <div class="text-charcoal font-serif text-lg sm:text-xl md:text-2xl tracking-tight">Galeri Foto</div>
                 </div>
                 <div class="flex items-center gap-3">
                     <button @click="openAddModal" class="btn bg-charcoal hover:bg-sage text-white border-none rounded-xl font-bold h-9 px-4 text-xs flex items-center gap-2 shadow-sm transition-all">
@@ -88,11 +88,11 @@
             </div>
 
             <!-- PAGE CONTENT -->
-            <div class="p-6 lg:p-10">
+            <div class="px-4 sm:px-6 lg:px-10 pb-24 pt-8">
                 <div class="max-w-7xl mx-auto">
 
                     <!-- Banner -->
-                    <div class="relative w-full rounded-[2rem] overflow-hidden p-8 lg:p-12 mb-8 gs-reveal flex flex-col justify-between min-h-[320px] lg:min-h-[380px] border border-black/5 bg-[#FBF9F6]">
+                    <div class="relative w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden p-6 sm:p-8 lg:p-12 mb-8 gs-reveal flex flex-col justify-between min-h-[280px] sm:min-h-[320px] lg:min-h-[380px] border border-black/5 bg-[#FBF9F6]">
                         
                         <!-- Project Palette Mesh Gradient Background -->
                         <div class="absolute -top-[10%] -right-[5%] w-[60%] h-[70%] bg-sage/30 rounded-full blur-[80px] pointer-events-none"></div>
@@ -115,11 +115,11 @@
                         </div>
 
                         <!-- Bottom: Typography -->
-                        <div class="relative z-10 mt-16 max-w-2xl">
-                            <h2 class="text-6xl lg:text-[5.5rem] font-serif text-charcoal leading-[1.05] tracking-tight mb-3">
+                        <div class="relative z-10 mt-12 sm:mt-16 max-w-2xl">
+                            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-serif text-charcoal leading-[1.05] tracking-tight mb-3">
                                 Galeri <br/> <span class="italic pr-4">komunitas</span>
                             </h2>
-                            <p class="text-charcoal/60 font-medium text-sm lg:text-base">Tinjau, setujui, tolak, atau tambahkan foto memukau ke galeri publik.</p>
+                            <p class="text-charcoal/60 font-medium text-xs sm:text-sm lg:text-base">Tinjau, setujui, tolak, atau tambahkan foto memukau ke galeri publik.</p>
                         </div>
                     </div>
 
