@@ -253,18 +253,6 @@ Browser Request
 
 ---
 
-## 📸 Tangkapan Layar
-
-| Halaman Utama (Hero) | Dashboard Admin (Overview) |
-|:---:|:---:|
-| Video fullscreen + animasi GSAP | Statistik real-time + activity feed |
-
-| Modal Pesan Tiket | Manajemen Galeri |
-|:---:|:---:|
-| Multi-step dengan kalender interaktif | Upload & moderasi foto pengunjung |
-
----
-
 ## 🤝 Kontribusi
 
 Proyek ini adalah karya akademik. Kontribusi tetap terbuka melalui:
