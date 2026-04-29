@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: lofi, light;
+}
+
+@theme {
+  --color-base: #FBF9F6;
+  --color-charcoal: #1a1a1a;
+  --color-sage: #6b7b62;
+  --color-clay: #c5a27d;
+  --color-darkbase: #141414;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Instrument Serif", serif;
+}
