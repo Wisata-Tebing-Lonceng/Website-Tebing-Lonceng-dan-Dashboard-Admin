@@ -40,7 +40,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- GSAP -->
+    <!-- GSAP core -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
 
@@ -526,7 +526,7 @@
                     Lebih dari sekadar tebing. <br><span class="italic text-charcoal/35">Sebuah mahakarya.</span>
                 </h2>
                 <?php if (!empty($settings['sejarah_text'])): ?>
-                <p class="text-charcoal/60 mt-4 sm:mt-6 max-w-2xl mx-auto font-medium leading-relaxed text-sm sm:text-base">
+                <p class="text-charcoal mt-4 sm:mt-6 max-w-2xl mx-auto font-medium leading-relaxed text-sm sm:text-base" style="color: #1a1a1a !important;">
                     <?= nl2br(htmlspecialchars($settings['sejarah_text'])) ?>
                 </p>
                 <?php endif; ?>
@@ -547,7 +547,7 @@
 
                         <!-- Image (fills remaining space) -->
                         <div class="flex-1 w-full relative rounded-[1.5rem] overflow-hidden min-h-0">
-                            <img src="<?= htmlspecialchars($settings['why_img1'] ?? 'assets/img/2.webp') ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Tebing Lonceng" loading="lazy">
+                            <img src="<?= htmlspecialchars($settings['why_img1'] ?? 'assets/img/2.webp') ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Tebing Lonceng" loading="lazy" decoding="async">
                             <div class="absolute inset-0 bg-gradient-to-t from-charcoal/85 via-transparent to-transparent"></div>
                             <div class="absolute bottom-5 left-5 right-5 text-white">
                                 <h2 class="font-serif text-3xl leading-tight mb-1"><?= htmlspecialchars($settings['acc1_title'] ?? 'Batu Berdering') ?></h2>
@@ -632,7 +632,7 @@
                         
                         <!-- Image -->
                         <div class="flex-1 rounded-[1.5rem] overflow-hidden relative min-h-0">
-                            <img src="<?= htmlspecialchars($settings['why_img2'] ?? 'assets/img/9.webp') ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Alam Tebing Lonceng" loading="lazy">
+                            <img src="<?= htmlspecialchars($settings['why_img2'] ?? 'assets/img/9.webp') ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Alam Tebing Lonceng" loading="lazy" decoding="async">
                             <div class="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500"></div>
                             <div class="absolute top-4 left-4">
                                 <span class="px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-[9px] font-bold text-charcoal tracking-widest uppercase">
@@ -837,7 +837,7 @@
                 <h2 class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif text-charcoal mb-4 sm:mb-6 leading-tight max-w-4xl mx-auto">
                     Eksplorasi Ruang <span class="italic text-sage/80">Ikonik.</span>
                 </h2>
-                <p class="text-gray-400 font-medium max-w-xl mx-auto text-sm sm:text-base md:text-lg">Beragam spot eksklusif yang dirancang untuk memanjakan visual dan menghadirkan ketenangan.</p>
+                <p class="text-charcoal/80 font-medium max-w-xl mx-auto text-sm sm:text-base md:text-lg" style="color: #1a1a1a !important;">Beragam spot eksklusif yang dirancang untuk memanjakan visual dan menghadirkan ketenangan.</p>
             </div>
 
             <!-- Infinite Scroll Container -->
@@ -854,7 +854,7 @@
                             <div class="group relative w-[280px] h-[400px] md:w-[320px] md:h-[460px] rounded-[2.5rem] overflow-hidden flex-shrink-0 bg-gray-200 cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 transform-gpu gs-infinite-card border border-black/5">
                                 
                                 <!-- Background Image -->
-                                <img src="<?= htmlspecialchars($f['gambar'] ?? '') ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" alt="<?= htmlspecialchars($f['nama'] ?? '') ?>">
+                                <img src="<?= htmlspecialchars($f['gambar'] ?? '') ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" alt="<?= htmlspecialchars($f['nama'] ?? '') ?>" loading="lazy" decoding="async">
                                 
                                 <!-- Top Gradient Overlay (Frosted Glass Base for Text) -->
                                 <div class="absolute top-0 left-0 right-0 h-3/5 bg-gradient-to-b from-[#1a2018]/80 via-[#1a2018]/30 to-transparent z-10 pointer-events-none mix-blend-multiply transition-opacity duration-500 group-hover:opacity-90"></div>
@@ -880,7 +880,7 @@
                             <div class="group relative w-[280px] h-[400px] md:w-[320px] md:h-[460px] rounded-[2.5rem] overflow-hidden flex-shrink-0 bg-gray-200 cursor-pointer shadow-xl hover:shadow-2xl transition-all duration-500 transform-gpu gs-infinite-card border border-black/5">
                                 
                                 <!-- Background Image -->
-                                <img src="<?= htmlspecialchars($f['gambar'] ?? '') ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" alt="<?= htmlspecialchars($f['nama'] ?? '') ?>">
+                                <img src="<?= htmlspecialchars($f['gambar'] ?? '') ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" alt="<?= htmlspecialchars($f['nama'] ?? '') ?>" loading="lazy" decoding="async">
                                 
                                 <!-- Top Gradient Overlay (Frosted Glass Base for Text) -->
                                 <div class="absolute top-0 left-0 right-0 h-3/5 bg-gradient-to-b from-[#1a2018]/80 via-[#1a2018]/30 to-transparent z-10 pointer-events-none mix-blend-multiply transition-opacity duration-500 group-hover:opacity-90"></div>
@@ -1453,7 +1453,6 @@
                     }
                 });
 
-                // 1. Hero Animation (Smooth Blur & Y effect)
                 gsap.from(".gs-hero-text", {
                     y: 40,
                     filter: "blur(15px)",
@@ -1811,8 +1810,8 @@
                         }
 
                         gsap.from(".gs-bento-title", {
-                            scrollTrigger: { trigger: "#about", start: "top 85%" },
-                            y: 30, opacity: 0, duration: 1, ease: "power3.out"
+                            scrollTrigger: { trigger: "#about", start: "top 85%", once: true },
+                            y: 30, opacity: 0, duration: 0.8, ease: "power3.out"
                         });
                     }
                 });
@@ -1825,26 +1824,26 @@
                     
                     // Top Split Entrance
                     gsap.from(".gs-hs-top", {
-                        scrollTrigger: { trigger: homestaySection, start: "top 75%" },
-                        y: 50, opacity: 0, duration: 1.2, ease: "power3.out"
+                        scrollTrigger: { trigger: homestaySection, start: "top 75%", once: true },
+                        y: 40, opacity: 0, duration: 1, ease: "power3.out"
                     });
                     
                     // Left Column Stagger
                     gsap.from(".gs-hs-stagger", {
-                        scrollTrigger: { trigger: ".gs-hs-top", start: "top 70%" },
-                        y: 30, opacity: 0, stagger: 0.15, duration: 1, ease: "power3.out"
+                        scrollTrigger: { trigger: ".gs-hs-top", start: "top 70%", once: true },
+                        y: 25, opacity: 0, stagger: 0.12, duration: 0.9, ease: "power3.out"
                     });
                     
                     // Right Image Scale Reveal
                     gsap.from(".gs-hs-img", {
-                        scrollTrigger: { trigger: ".gs-hs-top", start: "top 70%" },
-                        scale: 0.95, opacity: 0, duration: 1.5, ease: "power2.out"
+                        scrollTrigger: { trigger: ".gs-hs-top", start: "top 70%", once: true },
+                        scale: 0.97, opacity: 0, duration: 1.2, ease: "power2.out"
                     });
                     
                     // Bottom Section Entrance
                     gsap.from(".gs-hs-bottom", {
-                        scrollTrigger: { trigger: ".gs-hs-bottom", start: "top 85%" },
-                        y: 50, opacity: 0, duration: 1.2, ease: "power3.out"
+                        scrollTrigger: { trigger: ".gs-hs-bottom", start: "top 85%", once: true },
+                        y: 40, opacity: 0, duration: 1, ease: "power3.out"
                     });
 
                     // GSAP Gallery Infinite Crossfade with ClipPath Wipe
@@ -1882,10 +1881,10 @@
                             currentSlide = nextSlide;
                         };
                         
-                        // Loop every 4.5s
-                        gsap.delayedCall(4.5, function loop() {
+                        // Loop every 5.5s (was 4.5s — reduces crossfade frequency)
+                        gsap.delayedCall(5.5, function loop() {
                             playSlide();
-                            gsap.delayedCall(4.5, loop);
+                            gsap.delayedCall(5.5, loop);
                         });
                     }
                 }
@@ -1920,9 +1919,9 @@
                         scrollTrigger: {
                             trigger: card,
                             start: "top 90%",
-                            toggleActions: "play none none reverse" // Revert on scroll up
+                            once: true  // kill trigger after first fire — saves memory
                         },
-                        y: 50,
+                        y: 40,
                         opacity: 0,
                         duration: 0.8,
                         ease: "power2.out"
@@ -1937,20 +1936,19 @@
                 // ── Swiper Testimonials Initialization ──
                 const archRing = document.querySelector('.gs-arch-ring');
                 if (archRing) {
-                    // Entrance: fade in the swiper from below
                     gsap.from(archRing, {
-                        scrollTrigger: { trigger: "#reviews", start: "top 65%" },
+                        scrollTrigger: { trigger: "#reviews", start: "top 65%", once: true },
                         opacity: 0,
-                        y: 80,
-                        duration: 1.5,
+                        y: 60,
+                        duration: 1.2,
                         ease: "power3.out"
                     });
                 }
 
                 // Section heading text entrance
                 gsap.from(".gs-arch-text > *", {
-                    scrollTrigger: { trigger: "#reviews", start: "top 70%" },
-                    y: 40, opacity: 0, duration: 1, stagger: 0.15, ease: "power3.out"
+                    scrollTrigger: { trigger: "#reviews", start: "top 70%", once: true },
+                    y: 30, opacity: 0, duration: 0.8, stagger: 0.12, ease: "power3.out"
                 });
 
                 const reviewSwiperEl = document.getElementById('reviewSwiper');
