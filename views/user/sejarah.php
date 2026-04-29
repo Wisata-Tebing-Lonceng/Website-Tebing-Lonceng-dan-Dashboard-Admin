@@ -23,6 +23,41 @@ session_start();
 <!-- Tailwind & DaisyUI -->
     <!-- Fonts -->
     <!-- GSAP -->
+
+    <!-- Tailwind & DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        base: '#FBF9F6',
+                        charcoal: '#1a1a1a',
+                        sage: '#6b7b62',
+                        clay: '#c5a27d',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Instrument Serif', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script>
+
+>>>>>>> 49d32425052f5de5ae671c127b1b9c75e9fec3d9
     <style>
         body { background-color: #FBF9F6; color: #1a1a1a; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
@@ -88,8 +123,14 @@ session_start();
 
     <!-- Ambient Blobs (from home.php) -->
 
+<<<<<<< HEAD
     <!-- Smooth Wrapper Removed (Lenis) -->
         <div class="relative z-10 pt-32">
+=======
+    <!-- Smooth Wrapper -->
+    <div id="smooth-wrapper">
+        <div id="smooth-content" class="relative z-10 pt-32">
+>>>>>>> 49d32425052f5de5ae671c127b1b9c75e9fec3d9
             
             <main class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pb-24">
                 
@@ -201,10 +242,15 @@ session_start();
                 </div>
             </footer>
         </div>
+<<<<<<< HEAD
+=======
+    </div>
+>>>>>>> 49d32425052f5de5ae671c127b1b9c75e9fec3d9
 
     <!-- GSAP Animations -->
     <script>
         document.addEventListener("DOMContentLoaded", (event) => {
+<<<<<<< HEAD
             gsap.registerPlugin(ScrollTrigger);
             
             // Setup Smooth Scroll
@@ -227,6 +273,17 @@ session_start();
             });
             gsap.ticker.lagSmoothing(0);
       
+=======
+            gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+            
+            // Setup Smooth Scroll
+            const smoother = ScrollSmoother.create({
+                wrapper: '#smooth-wrapper',
+                content: '#smooth-content',
+                smooth: 1.5,
+                effects: true
+            });
+>>>>>>> 49d32425052f5de5ae671c127b1b9c75e9fec3d9
 
             // Initial Animations
             const tl = gsap.timeline();

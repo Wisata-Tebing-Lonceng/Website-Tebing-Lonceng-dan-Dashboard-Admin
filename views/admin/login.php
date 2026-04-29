@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin - Tebing Lonceng</title>
     
+<<<<<<< HEAD
     
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/fonts.css">
@@ -20,6 +21,36 @@
     <script src="../assets/vendor/gsap.min.js"></script>
 <!-- Tailwind & DaisyUI CDN -->
     <!-- Fonts & Icons -->
+=======
+    <!-- Tailwind & DaisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        base: '#FBF9F6',       
+                        charcoal: '#1a1a1a',   
+                        sage: '#6b7b62',       
+                        clay: '#c5a27d',       
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Instrument Serif', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+>>>>>>> 49d32425052f5de5ae671c127b1b9c75e9fec3d9
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -127,6 +158,10 @@
     </div>
 
     <!-- Vue.js 3 CDN -->
+<<<<<<< HEAD
+=======
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+>>>>>>> 49d32425052f5de5ae671c127b1b9c75e9fec3d9
     <script>
         const { createApp } = Vue;
         createApp({

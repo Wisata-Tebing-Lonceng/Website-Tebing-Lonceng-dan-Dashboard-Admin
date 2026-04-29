@@ -23,6 +23,7 @@ $galleries = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galeri Komunitas - Tebing Lonceng</title>
     
+<!-- <<<<<<< HEAD -->
     
     <!-- CSS -->
     <link rel="stylesheet" href="../../assets/css/fonts.css">
@@ -38,6 +39,43 @@ $galleries = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     <!-- Fonts -->
     <!-- Vue.js -->
     <!-- GSAP -->
+     
+    <!-- Tailwind & DaisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        base: '#FBF9F6',
+                        charcoal: '#1a1a1a',
+                        sage: '#6b7b62',
+                        clay: '#c5a27d',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Instrument Serif', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    
+    <!-- Vue.js -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+
+>>>>>>> 49d32425052f5de5ae671c127b1b9c75e9fec3d9
     <style>
         body { background-color: #FBF9F6; color: #1a1a1a; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         
