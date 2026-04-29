@@ -8,7 +8,6 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Konten Halaman - Tebing Lonceng Admin</title>
-<<<<<<< HEAD
     
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/fonts.css">
@@ -20,7 +19,7 @@
     <script src="../assets/vendor/vue.global.prod.js"></script>
     <script src="../assets/vendor/gsap.min.js"></script>
 <style>
-=======
+
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -38,7 +37,6 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
     <style>
->>>>>>> 49d32425052f5de5ae671c127b1b9c75e9fec3d9
         body { font-family:'Inter',sans-serif; background:#FBF9F6; color:#1a1a1a; }
         [v-cloak] { display:none !important; }
         .glass-sidebar { background:rgba(251,249,246,.7); backdrop-filter:blur(24px) saturate(160%); -webkit-backdrop-filter:blur(24px) saturate(160%); border-right:1px solid rgba(0,0,0,.05); }

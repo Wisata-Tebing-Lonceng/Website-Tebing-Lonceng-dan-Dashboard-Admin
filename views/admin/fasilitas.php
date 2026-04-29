@@ -10,8 +10,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Tebing Lonceng Admin</title>
 
-<<<<<<< HEAD
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/fonts.css">
     <link rel="stylesheet" href="../assets/css/app.css">
@@ -24,7 +23,7 @@
 <!-- Tailwind & DaisyUI -->
     <!-- Fonts -->
     <!-- GSAP & Vue.js -->
-=======
+
     <!-- Tailwind & DaisyUI -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
